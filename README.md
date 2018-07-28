@@ -9,12 +9,31 @@
 $ pip install geojson2fromto
 ```
 
-
 ## Usage
 
 
 ```
 geojson2fromto data.geojson from-to-data.json
+```
+
+
+## Dev Install
+
+
+```
+$ git@github.com:weaselandfox/geojson2fromto.git
+$ cd geojson2fromto
+$ pipenv install
+
+```
+
+
+## Dev Usage
+
+
+```
+$ pipenv shell
+$ pipenv run python . input.geojson output.json
 ```
 
 There are multiple command-line options available:
