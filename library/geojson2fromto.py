@@ -15,7 +15,7 @@ def get_geometries(input_file_path):
 
     return data_frame['geometry']
 
-def get_fromtos(linestring_coords):
+def get_fromtos_line(linestring_coords):
     """
     Converts a list of linestring coordinates to a list of 'from-to'
     dictionaries.
@@ -37,8 +37,8 @@ def get_fromtos(linestring_coords):
 
 def get_fromtos_multi(multi_linestring):
     """
-    Converts a list of lists containing linestring coordinates to a
-    list of 'from-to' dictionaries.
+    Converts a GeoSeries with MuiltiLineStrings to a list of 'from-to'
+    dictionaries.
     """
     multi_linestring_coords = list(map(
         lambda linestring: list(linestring.coords),
@@ -46,12 +46,28 @@ def get_fromtos_multi(multi_linestring):
     ))
 
     return reduce(
-        (lambda fromtos, linestring: fromtos + get_fromtos(linestring)),
+        (lambda fromtos, linestring: fromtos + get_fromtos_line(linestring)),
         multi_linestring_coords,
         []
     )
 
 
+def get_fromtos(geometry):
+    """
+    Converts a LineString or MultiLineString geometry to a list of
+    'from-to' dictionaries.
+    """
+    if geometry is None:
+        return []
+
+    geom_type = geometry.geom_type
+
+    if geom_type == 'LineString':
+        return get_fromtos_line(geometry.coords)
+
+    if geom_type == 'MultiLineString':
+        return get_fromtos_multi(geometry)
+    return []
 
 def convert(input_file_path):
     """
@@ -62,7 +78,7 @@ def convert(input_file_path):
     geometries = get_geometries(input_file_path)
 
     return reduce(
-        (lambda fromtos, geometry: fromtos + get_fromtos_multi(geometry)),
+        (lambda fromtos, geometry: fromtos + get_fromtos(geometry)),
         geometries,
         []
     )
