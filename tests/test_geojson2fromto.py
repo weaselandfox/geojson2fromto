@@ -16,7 +16,7 @@ def convert_parameters():
     test_input = os.path.abspath(os.path.join(__file__, os.pardir) + '/fixtures/roads.geojson')
 
     expected_output = [{
-        'from': (5.29304565210666, 51.677748170157187),
+        'from': (5.29304565210666, 51.683623536234776),
         'to': (5.293036226696422, 51.67776112527045)
     }, {
         'from': (5.293036226696422, 51.67776112527045),

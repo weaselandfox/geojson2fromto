@@ -3,8 +3,10 @@ Main entry file for the geojson2fromto module.
 """
 
 import sys
-import json
+import simplejson as json
 from library import geojson2fromto
+
+json.encoder.FLOAT_REPR = lambda x: format(x, '.15f')
 
 INPUTFILE_PATH = str(sys.argv[1])
 
