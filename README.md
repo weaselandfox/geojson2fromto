@@ -48,6 +48,16 @@ $ geojson2fromto --help
 
   Options:
     --help          # Print the generator's options and usage
+```
+
+
+### Tests
+
+Make sure you have activated a virtualenv (run `$ pipenv shell`)
+
+```
+$ pipenv run python pytest
+```
 
 
 ## License
