@@ -11,9 +11,8 @@ $ pip install geojson2fromto
 
 ## Usage
 
-
 ```
-geojson2fromto data.geojson from-to-data.json
+geojson2fromto data.geojson [from-to-data.json]
 ```
 
 
@@ -41,8 +40,11 @@ There are multiple command-line options available:
 ```
 $ geojson2fromto --help
 
+  geojson2fromto takes a GeoJSON file and outputs JSON with 'from-to' data to
+  STDOUT or writes to an optional output-file
+
   Usage:
-    geojson2fromto [options] input-file ouput-file
+    geojson2fromto [options] input-file [ouput-file]
 
   Options:
     --help          # Print the generator's options and usage

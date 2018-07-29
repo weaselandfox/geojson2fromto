@@ -3,7 +3,12 @@ import json
 import geopandas
 
 inputFilePath = str(sys.argv[1])
-outputFilePath = str(sys.argv[2])
+
+try:
+    outputFilePath = str(sys.argv[2])
+except IndexError:
+    outputFilePath = None
+
 dataFrameFroms = geopandas.read_file(inputFilePath)
 dataFrameTos = geopandas.read_file(inputFilePath)
 
@@ -23,5 +28,8 @@ for i in range(len(lineCoordinatesListA)):
 
     a.append(d)
 
-with open(outputFilePath, 'w') as outfile:
-    json.dump(a, outfile)
+if outputFilePath != None:
+    with open(outputFilePath, 'w') as outfile:
+        json.dump(a, outfile)
+else:
+    sys.stdout.write(json.dumps(a))
