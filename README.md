@@ -32,7 +32,7 @@ $ pipenv install
 
 ```
 $ pipenv shell
-$ pipenv run python . input.geojson output.json
+$ python . input.geojson output.json
 ```
 
 There are multiple command-line options available:
@@ -56,7 +56,7 @@ $ geojson2fromto --help
 Make sure you have activated a virtualenv (run `$ pipenv shell`)
 
 ```
-$ pipenv run python pytest
+$ pytest
 ```
 
 
