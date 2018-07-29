@@ -1,6 +1,6 @@
 # geojson2fromto
 
-> Python module that converts GeoJSON to DECK.GL's LineLayer 'from-to'
+> Python module that converts LineStrings and MultiLineStrings of a GeoJSON FeatureCollection to DECK.GL's LineLayer 'from-to'
 
 
 ## Install
