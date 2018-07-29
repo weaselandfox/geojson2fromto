@@ -35,16 +35,23 @@ def get_fromtos(linestring_coords):
 
     return fromtos
 
-def get_fromtos_multi(multi_linestring_coords):
+def get_fromtos_multi(multi_linestring):
     """
     Converts a list of lists containing linestring coordinates to a
     list of 'from-to' dictionaries.
     """
+    multi_linestring_coords = list(map(
+        lambda linestring: list(linestring.coords),
+        list(multi_linestring.geoms)
+    ))
+
     return reduce(
         (lambda fromtos, linestring: fromtos + get_fromtos(linestring)),
         multi_linestring_coords,
         []
     )
+
+
 
 def convert(input_file_path):
     """
@@ -54,10 +61,8 @@ def convert(input_file_path):
 
     geometries = get_geometries(input_file_path)
 
-    multi_linestring = geometries[0]
-    multi_linestring_coords = list(map(
-        lambda linestring: list(linestring.coords),
-        list(multi_linestring.geoms)
-    ))
-
-    return get_fromtos_multi(multi_linestring_coords)
+    return reduce(
+        (lambda fromtos, geometry: fromtos + get_fromtos_multi(geometry)),
+        geometries,
+        []
+    )
