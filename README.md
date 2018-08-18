@@ -14,6 +14,8 @@ $ pip install geojson2fromto
 ```
 geojson2fromto data.geojson [from-to-data.json]
 ```
+---
+**Note** To use the resulting JSON with Deck.GL's LineLayer the `coordinateSystem` prop of the LineLayer has to be set to `COORDINATE_SYSTEM.LNGLAT_EXPERIMENTAL`
 
 
 ## Dev Install
