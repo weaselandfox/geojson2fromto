@@ -2,6 +2,8 @@
 Main entry file for the geojson2fromto module.
 """
 
+__version__ = '0.1'
+
 import sys
 import simplejson as json
 from library import geojson2fromto
