@@ -2,7 +2,9 @@
 Module for converting geojson to from-to json.
 """
 
+import sys
 from functools import reduce
+import simplejson as json
 import geopandas
 
 def get_geometries(input_file_path):
@@ -82,3 +84,25 @@ def convert(input_file_path):
         geometries,
         []
     )
+
+def main(argv=None):
+    """
+    Exposes the CLI of geojson2fromto
+    """
+
+    json.encoder.FLOAT_REPR = lambda x: format(x, '.15f')
+
+    inputfile_path = str(argv[1])
+
+    try:
+        outputfile_path = str(argv[2])
+    except IndexError:
+        outputfile_path = None
+
+    fromto = convert(inputfile_path)
+
+    if outputfile_path is not None:
+        with open(outputfile_path, 'w') as outfile:
+            json.dump(fromto, outfile)
+    else:
+        sys.stdout.write(json.dumps(fromto))
