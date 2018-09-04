@@ -49,7 +49,7 @@ Dev Usage
 ::
 
    $ pipenv shell
-   $ python . input.geojson output.json
+   $ python ./geojson2fromto input.geojson [output.json]
 
 Tests
 ~~~~~
