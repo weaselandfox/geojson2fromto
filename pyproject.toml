@@ -1,0 +1,11 @@
+[build-system]
+requires = ["flit"]
+build-backend = "flit.buildapi"
+
+[tool.flit.metadata]
+module = "geojson2fromto"
+author = "Weasel & Fox"
+author-email = "hello@weaselandfox.com"
+home-page = "https://github.com/weaselandfox/geojson2fromto"
+classifiers = ["License :: OSI Approved :: MIT License"]
+
