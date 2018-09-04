@@ -6,7 +6,7 @@ Test for geojson2fromto.
 
 import os
 import pytest
-from library import geojson2fromto
+from geojson2fromto.library import geojson2fromto
 
 @pytest.fixture()
 def convert_parameters():
