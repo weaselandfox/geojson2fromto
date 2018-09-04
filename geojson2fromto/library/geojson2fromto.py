@@ -85,7 +85,7 @@ def convert(input_file_path):
         []
     )
 
-def main(argv=None):
+def main(argv=sys.argv): # pylint: disable=dangerous-default-value
     """
     Exposes the CLI of geojson2fromto
     """
