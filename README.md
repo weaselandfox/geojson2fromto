@@ -6,17 +6,20 @@
 - Python 3 - 3.6. Python 3.7 doesn't work due to [pyproj's lack of support for Python 3.7](https://github.com/jswhit/pyproj/issues/136) 
 which is a dependency of [geopandas](https://github.com/geopandas/geopandas) which has [it's own related issue](https://github.com/geopandas/geopandas/issues/793) to this
 
+
 ## Install
 
 ```
 $ pip install geojson2fromto
 ```
 
+
 ## Usage
 
 ```
 geojson2fromto data.geojson [from-to-data.json]
 ```
+
 ---
 **Note** To use the resulting JSON with Deck.GL's LineLayer the `coordinateSystem` prop of the LineLayer has to be set to `COORDINATE_SYSTEM.LNGLAT_EXPERIMENTAL`
 
@@ -38,21 +41,6 @@ $ pipenv install
 ```
 $ pipenv shell
 $ python . input.geojson output.json
-```
-
-There are multiple command-line options available:
-
-```
-$ geojson2fromto --help
-
-  geojson2fromto takes a GeoJSON file and outputs JSON with 'from-to' data to
-  STDOUT or writes to an optional output-file
-
-  Usage:
-    geojson2fromto [options] input-file [ouput-file]
-
-  Options:
-    --help          # Print the generator's options and usage
 ```
 
 
