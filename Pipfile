@@ -10,6 +10,7 @@ pylint = "*"
 simplejson = "*"
 
 [dev-packages]
+flit = "*"
 
 [requires]
 python_version = "3.6"
