@@ -7,6 +7,7 @@ module = "geojson2fromto"
 author = "Weasel & Fox"
 author-email = "hello@weaselandfox.com"
 home-page = "https://github.com/weaselandfox/geojson2fromto"
+requires = ["geopandas", "simplejson"]
 classifiers = ["License :: OSI Approved :: MIT License"]
 
 [tool.flit.scripts]
