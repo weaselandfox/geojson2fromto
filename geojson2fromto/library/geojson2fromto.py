@@ -92,7 +92,12 @@ def main(argv=sys.argv): # pylint: disable=dangerous-default-value
 
     json.encoder.FLOAT_REPR = lambda x: format(x, '.15f')
 
-    inputfile_path = str(argv[1])
+
+    try:
+        inputfile_path = str(argv[1])
+    except IndexError:
+        sys.stdout.write("Please provide a path to the input geojson file as the first argument")
+        return False
 
     try:
         outputfile_path = str(argv[2])
@@ -106,3 +111,5 @@ def main(argv=sys.argv): # pylint: disable=dangerous-default-value
             json.dump(fromto, outfile)
     else:
         sys.stdout.write(json.dumps(fromto))
+
+    return True

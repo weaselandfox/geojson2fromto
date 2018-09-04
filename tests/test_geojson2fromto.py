@@ -108,6 +108,12 @@ def convert_features_parameters():
 
     return test_input, expected_output
 
+def test_main_no_argument():
+    """
+    It should not throw an error if no argument is provided
+    """
+    assert geojson2fromto.main() is False
+
 def test_convert(convert_parameters):
     """
     It should convert input geojson to 'from-to' json.
