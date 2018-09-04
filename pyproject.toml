@@ -9,3 +9,5 @@ author-email = "hello@weaselandfox.com"
 home-page = "https://github.com/weaselandfox/geojson2fromto"
 classifiers = ["License :: OSI Approved :: MIT License"]
 
+[tool.flit.scripts]
+geojson2fromto = "geojson2fromto.library.geojson2fromto:main"
