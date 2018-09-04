@@ -8,6 +8,7 @@ author = "Weasel & Fox"
 author-email = "hello@weaselandfox.com"
 home-page = "https://github.com/weaselandfox/geojson2fromto"
 requires = ["geopandas", "simplejson"]
+description-file = "README.rst"
 classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3.6"
