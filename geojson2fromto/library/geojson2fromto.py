@@ -3,19 +3,33 @@ Module for converting geojson to from-to json.
 """
 
 import sys
+import math
 from functools import reduce
 import simplejson as json
 import geopandas
 
-def get_geometries(input_file_path):
+def get_data_frame(input_file_path):
     """
-    Reads a GeoJSON input file and ouputs a geopandas.GeoSeries object
-    with geometries.
+    Reads a GeoJSON input file and returns a geopandas DataFrame object.
     """
 
-    data_frame = geopandas.read_file(input_file_path)
+    return geopandas.read_file(input_file_path)
+
+def get_geometries(data_frame):
+    """
+    Returns a geopandas GeoSeries object with geometries from a DataFrame.
+    """
 
     return data_frame['geometry']
+
+def get_properties(data_frame):
+    """
+    Returns a list of dictionaries containing the properties of
+    the features.
+    """
+
+    return data_frame.drop(columns=['geometry']).to_dict('records')
+
 
 def get_fromtos_line(linestring_coords):
     """
@@ -71,19 +85,41 @@ def get_fromtos(geometry):
         return get_fromtos_multi(geometry)
     return []
 
+def merge_fromto_with_properties(fromto, properties):
+    """
+    Merges a dictionary with from to elements with an array of dictionaries
+    with properties.
+    """
+    index, coords = fromto
+    property_index = min(math.floor(index / 2), len(properties) - 1)
+
+    if bool(properties[property_index]):
+        coords['properties'] = properties[property_index]
+
+    return coords
+
 def convert(input_file_path):
     """
     Converts a GeoJSON file to a list with dictionaries containing from
     and to fields.
     """
 
-    geometries = get_geometries(input_file_path)
+    data_frame = get_data_frame(input_file_path)
+    geometries = get_geometries(data_frame)
+    properties = get_properties(data_frame)
 
-    return reduce(
+    fromtos = reduce(
         (lambda fromtos, geometry: fromtos + get_fromtos(geometry)),
         geometries,
         []
     )
+
+    fromtos_properties = map(
+        lambda fromto: merge_fromto_with_properties(fromto, properties),
+        enumerate(fromtos),
+    )
+
+    return list(fromtos_properties)
 
 def main(argv=sys.argv): # pylint: disable=dangerous-default-value
     """

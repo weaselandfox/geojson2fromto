@@ -108,6 +108,51 @@ def convert_features_parameters():
 
     return test_input, expected_output
 
+@pytest.fixture()
+def convert_properties_parameters():
+    """
+    Fixture function.
+    """
+    test_input = os.path.abspath(
+        os.path.join(__file__, os.pardir) + '/fixtures/roads_multiline_features_properties.geojson'
+    )
+
+    expected_output = [{
+        'from': (5.29304565210666, 51.677748170157187),
+        'to': (5.293036226696422, 51.67776112527045),
+        'properties': {
+            'id': 'testid123',
+            'type': 'road',
+            'name': 'Isabellalaan'
+        }
+    }, {
+        'from': (5.293018976918102, 51.677782224485654),
+        'to': (5.293006100024401, 51.677792310480484),
+        'properties': {
+            'id': 'testid123',
+            'type': 'road',
+            'name': 'Isabellalaan'
+        }
+    }, {
+        'from': (5.293184004341166, 51.677927885896217),
+        'to': (5.293170313261858, 51.677914957221006),
+        'properties': {
+            'id': 'testid456',
+            'type': 'road',
+            'name': 'Hekellaan'
+        }
+    }, {
+        'from': (5.293131483208716, 51.677895977248333),
+        'to': (5.293111071340474, 51.677889225908949),
+        'properties': {
+            'id': 'testid456',
+            'type': 'road',
+            'name': 'Hekellaan'
+        }
+    }]
+
+    return test_input, expected_output
+
 def test_main_no_argument():
     """
     It should not throw an error if no argument is provided
@@ -136,4 +181,13 @@ def test_convert_features(convert_features_parameters):
     """
     test_input = convert_features_parameters[0]
     expected_output = convert_features_parameters[1]
+    assert geojson2fromto.convert(test_input) == expected_output
+
+def test_convert_properties(convert_properties_parameters):
+    """
+    It should add a properties item to the dictionaries when a Feature in the featurecollention
+    has properties.
+    """
+    test_input = convert_properties_parameters[0]
+    expected_output = convert_properties_parameters[1]
     assert geojson2fromto.convert(test_input) == expected_output

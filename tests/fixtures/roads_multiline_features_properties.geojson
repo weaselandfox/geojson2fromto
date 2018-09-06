@@ -1,0 +1,51 @@
+{
+  "type":"FeatureCollection",
+    "crs":{
+      "type":"name",
+      "properties":{
+        "name":"urn:ogc:def:crs:OGC:1.3:CRS84"
+      }
+    },
+    "features":[
+    {
+      "type":"Feature",
+      "properties":{
+        "id": "testid123",
+        "type":"road",
+        "name":"Isabellalaan"
+      },
+      "geometry":{
+        "type":"MultiLineString",
+        "coordinates":[
+          [
+            [5.29304565210666, 51.677748170157187],
+            [5.293036226696422, 51.67776112527045]
+          ], [
+            [5.293018976918102, 51.677782224485654],
+            [5.293006100024401, 51.677792310480484]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "testid456",
+        "type": "road",
+        "name": "Hekellaan"
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [5.293184004341166, 51.677927885896217],
+            [5.293170313261858, 51.677914957221006]
+          ], [
+            [5.293131483208716, 51.677895977248333],
+            [5.293111071340474, 51.677889225908949]
+          ]
+        ]
+      }
+    }
+  ]
+}

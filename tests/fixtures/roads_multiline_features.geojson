@@ -9,11 +9,6 @@
   "features":[
     {
       "type":"Feature",
-      "properties":{
-        "id":null,
-        "type":"road",
-        "name":"Isabellalaan"
-      },
       "geometry":{
         "type":"MultiLineString",
         "coordinates":[
@@ -33,11 +28,6 @@
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": null,
-        "type": "road",
-        "name": "Isabellalaan"
-      },
       "geometry": {
         "type": "MultiLineString",
         "coordinates": [
