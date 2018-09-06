@@ -4,6 +4,8 @@ geojson2fromto
    Python module that converts LineStrings and MultiLineStrings of a
    GeoJSON FeatureCollection to DECK.GL’s LineLayer ‘from-to’
 
+|pypi|
+
 Requirements
 ------------
 
@@ -64,3 +66,7 @@ License
 -------
 
 MIT © `Weasel & Fox <https://www.weaselandfox.com>`__
+
+.. |pypi| image:: https://badge.fury.io/py/geojson2fromto.svg
+    :alt: PyPi package
+    :target: https://badge.fury.io/py/geojson2fromto
